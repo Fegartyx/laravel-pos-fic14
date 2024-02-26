@@ -58,6 +58,7 @@
                                         <tr>
                                             <th>Name</th>
                                             <th>Category</th>
+                                            <th>Sub Category</th>
                                             <th>Price</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -69,6 +70,9 @@
                                                 </td>
                                                 <td>
                                                     {{ $product->category->name }}
+                                                </td>
+                                                <td>
+                                                    {{ $product->subCategory->name }}
                                                 </td>
                                                 <td>
                                                     {{ $product->price }}

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,5 @@ Route::group([
     Route::get('/user', [AuthController::class, 'fetch']);
     Route::apiResource('/categories', CategoryController::class);
     Route::apiResource('/products', ProductController::class);
+    Route::apiResource('/sub-categories', SubCategoryController::class);
 });

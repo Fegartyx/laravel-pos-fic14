@@ -44,6 +44,9 @@
                     <li class="{{ Request::is('features/categories*') ? 'active' : '' }}">
                         <a class="nav-link" href="/features/categories">Categories</a>
                     </li>
+                    <li class="{{ Request::is('features/sub-categories*') ? 'active' : '' }}">
+                        <a class="nav-link" href="/features/sub-categories">SubCategory</a>
+                    </li>
                     <li class="{{ Request::is('features/products*') ? 'active' : '' }}">
                         <a class="nav-link" href="/features/products">Products</a>
                     </li>

@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/features/users', UserController::class);
     Route::resource('/features/products', ProductController::class);
     Route::resource('/features/categories', CategoryController::class);
+    Route::resource('/features/sub-categories', SubCategoryController::class);
 
     Route::get('/', function () {
         return view('pages.dashboard-general-dashboard');

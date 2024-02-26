@@ -22,14 +22,9 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
         ]);
 
-        \App\Models\Category::factory()->create([
-            'name' => 'Random',
-            'description' => 'Random Category',
-            'image' => 'random.png',
-        ]);
-
         $this->call([
             CategorySeeder::class,
+            SubCategorySeeder::class,
             ProductSeeder::class,
         ]);
     }

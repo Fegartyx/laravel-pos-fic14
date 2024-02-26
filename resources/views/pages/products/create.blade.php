@@ -90,6 +90,21 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label>Sub Category</label>
+                                <select class="form-control @error('sub_category_id') is-invalid @enderror"
+                                    name="sub_category_id">
+                                    <option value="">Select Sub Category</option>
+                                    @foreach ($sub_categories as $sub)
+                                        <option value="{{ $sub->id }}">{{ $sub->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('sub_category_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label>Status</label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status">
                                     <option value="1">Available</option>

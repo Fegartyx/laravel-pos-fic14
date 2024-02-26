@@ -12,6 +12,16 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Category::factory(5)->create();
+        // \App\Models\Category::factory(5)->create();
+        \App\Models\Category::factory()->create([
+            'name' => 'Foods Menu',
+            'description' => 'Semua kategori makanan',
+            'image' => 'random.png',
+        ]);
+        \App\Models\Category::factory()->create([
+            'name' => 'Drinks Menu',
+            'description' => 'Semua kategori minuman',
+            'image' => 'random.png',
+        ]);
     }
 }

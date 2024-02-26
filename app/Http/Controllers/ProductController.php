@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -27,6 +28,7 @@ class ProductController extends Controller
     {
         return view('pages.products.create', [
             'categories' => Category::all(),
+            'sub_categories' => SubCategory::all(),
         ]);
     }
 
@@ -85,6 +87,7 @@ class ProductController extends Controller
         return view('pages.products.edit', [
             'product' => $product,
             'categories' => Category::all(),
+            'sub_categories' => SubCategory::all(),
         ]);
     }
 

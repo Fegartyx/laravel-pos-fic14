@@ -23,7 +23,8 @@ class ProductFactory extends Factory
             'stock' => $this->faker->numberBetween(1, 100),
             'is_favorite' => $this->faker->boolean,
             'status' => $this->faker->boolean,
-            'category_id' => $this->faker->numberBetween(1, 5),
+            'category_id' => $this->faker->numberBetween(1, 2),
+            'sub_category_id' => $this->faker->numberBetween(1, 5),
             'image' => $this->faker->imageUrl(640, 480),
         ];
     }
