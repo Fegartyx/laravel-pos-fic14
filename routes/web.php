@@ -23,14 +23,13 @@ use App\Http\Controllers\SubCategoryController;
 /**
  * Gunakan middleware untuk mendeteksi apakah user sudah login atau belum dengan cara auth/guest
  */
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::resource('/features/users', UserController::class);
     Route::resource('/features/products', ProductController::class);
     Route::resource('/features/categories', CategoryController::class);
     Route::resource('/features/sub-categories', SubCategoryController::class);
-
-    Route::get('/', function () {
-        return view('pages.dashboard-general-dashboard');
-    });
 });
+Route::get('/', function () {
+    return view('pages.dashboard-general-dashboard');
+})->middleware('auth');

@@ -13,5 +13,24 @@ class Authenticate extends Middleware
     protected function redirectTo(Request $request): ?string
     {
         return $request->expectsJson() ? null : route('login');
+        // return $request->expectsJson() ? null : response()->json([
+        //     'status' => 'Unauthorized',
+        // ], 401);
     }
+
+    /// Method untuk mengoverride unathorized token dari middleware
+    // protected function unauthenticated($request, array $guards)
+    // {
+    //     if ($request->expectsJson()) {
+    //         return response()->json(['error' => 'Unauthenticated.'], 401);
+    //     }
+    //     return redirect()->guest(route('login'));
+    //     // abort(response()->json(
+    //     //     [
+    //     //         'api_status' => '401',
+    //     //         'message' => 'UnAuthenticated',
+    //     //     ],
+    //     //     401
+    //     // ));
+    // }
 }

@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function __invoke(Request $request)
+    {
+        $dataFetch = $this->fetch();
+
+        return response()->json([
+            'data' => $dataFetch->getData(),
+        ], 200);
+
+        // return $dataFetch;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -50,5 +60,9 @@ class CategoryController extends Controller
     public function destroy(category $category)
     {
         //
+    }
+    public function fetch()
+    {
+        return $this->index();
     }
 }

@@ -74,6 +74,15 @@ class AuthController extends Controller
         ], 200);
     }
 
+    public function logout(Request $request)
+    {
+        $token = $request->user()->currentAccessToken()->delete();
+        return response()->json([
+            'token' => $token . ' Token Revoked',
+            'message' => 'Logout success'
+        ], 200);
+    }
+
     public function fetch(Request $request)
     {
         return response()->json(['user' => $request->user()]);

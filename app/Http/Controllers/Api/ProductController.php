@@ -4,10 +4,22 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\product;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
+    public function __invoke(Request $request)
+    {
+        $dataFetch = $this->fetch();
+
+        return response()->json([
+            'data' => $dataFetch->getData(),
+        ], 200);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -50,5 +62,9 @@ class ProductController extends Controller
     public function destroy(product $product)
     {
         //
+    }
+    public function fetch(): JsonResponse
+    {
+        return $this->index();
     }
 }

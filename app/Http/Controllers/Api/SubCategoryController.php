@@ -4,10 +4,20 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\SubCategory;
+use Illuminate\Database\Eloquent\Casts\Json;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
 {
+    public function __invoke()
+    {
+        $dataFetch = $this->fetch();
+
+        return response()->json([
+            'data' => $dataFetch->getData(),
+        ], 200);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -50,5 +60,9 @@ class SubCategoryController extends Controller
     public function destroy(SubCategory $subCategory)
     {
         //
+    }
+    public function fetch(): JsonResponse
+    {
+        return $this->index();
     }
 }

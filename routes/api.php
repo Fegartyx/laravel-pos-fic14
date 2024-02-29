@@ -26,12 +26,23 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
 Route::group([
-    'middleware' => ['auth:sanctum'],
+    'middleware' => ['auth:sanctum', 'admin'],
     'as' => 'api.',
-    'prefix' => 'v1'
+    'prefix' => 'admin'
 ], function () {
     Route::get('/user', [AuthController::class, 'fetch']);
     Route::apiResource('/categories', CategoryController::class);
     Route::apiResource('/products', ProductController::class);
     Route::apiResource('/sub-categories', SubCategoryController::class);
+});
+
+Route::group([
+    'middleware' => ['auth:sanctum'],
+    'as' => 'api.',
+    'prefix' => 'v1'
+], function () {
+    Route::get('/user', [AuthController::class, 'fetch']);
+    Route::get('/categories', CategoryController::class, 'fetch');
+    Route::get('/products', ProductController::class, 'fetch');
+    Route::get('/sub-categories', SubCategoryController::class, 'fetch');
 });
