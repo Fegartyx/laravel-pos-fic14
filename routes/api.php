@@ -24,7 +24,9 @@ use App\Http\Controllers\Api\SubCategoryController;
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
+// TODO : Fix Agar saat token expired, message yang dikembalikan adalah unathenticated bukan login
 Route::group([
     'middleware' => ['auth:sanctum', 'admin'],
     'as' => 'api.',
@@ -36,6 +38,7 @@ Route::group([
     Route::apiResource('/sub-categories', SubCategoryController::class);
 });
 
+// Setiap Penggunaan api yang memakai token diaruskan melewati middleware sanctum jika tidak data kembaliannya null
 Route::group([
     'middleware' => ['auth:sanctum'],
     'as' => 'api.',
